@@ -14,17 +14,13 @@ search_python () {
 	while true; do
 		# list of interpreter names to try, in order
 		next_python "python3"
-		next_python "python"
-		next_python "python2.7"
-		next_python "python2.6"
-		next_python "python2"
 		next_python "none"
-	
+
 		if [ "$POL_PYTHON" = "none" ]; then
 			echo "Please install python before trying to run this program" 1>&2
 			return 1
-		fi                   
-	
+		fi
+
 		echo -n "Looking for $POL_PYTHON... " 1>&2
 		if [ "$(which $POL_PYTHON)" ]; then
 			local Version=$($POL_PYTHON --version 2>&1 |tail -n 1|sed -e 's/^Python //')
